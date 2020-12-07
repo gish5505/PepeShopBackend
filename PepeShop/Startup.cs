@@ -35,6 +35,8 @@ namespace PepeShop
                 .AddScoped<IProductService, ProductService>()
                 .AddScoped<IUserService, UserService>()
                 .AddScoped<IAuthService, AuthService>()
+                .AddScoped<IOrderService, OrderService>()
+                .AddScoped<IBasketService, OrderService>()
                 .AddEntityFrameworkNpgsql()
                 .AddDbContext<PepeShopContext>()
                 ;
