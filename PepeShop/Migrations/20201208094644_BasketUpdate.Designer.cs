@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PepeShop.DAL;
@@ -9,9 +10,10 @@ using PepeShop.DAL;
 namespace PepeShop.Migrations
 {
     [DbContext(typeof(PepeShopContext))]
-    partial class PepeShopContextModelSnapshot : ModelSnapshot
+    [Migration("20201208094644_BasketUpdate")]
+    partial class BasketUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,27 +33,15 @@ namespace PepeShop.Migrations
                     b.ToTable("Basket");
                 });
 
-            modelBuilder.Entity("PepeShop.Models.BasketItem", b =>
-                {
-                    b.Property<int>("BasketId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("BasketId", "ProductId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("BasketItem");
-                });
-
             modelBuilder.Entity("PepeShop.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int?>("BasketId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("Category")
                         .HasColumnType("integer");
@@ -68,6 +58,8 @@ namespace PepeShop.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BasketId");
 
                     b.ToTable("Product");
                 });
@@ -112,19 +104,11 @@ namespace PepeShop.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("PepeShop.Models.BasketItem", b =>
+            modelBuilder.Entity("PepeShop.Models.Product", b =>
                 {
-                    b.HasOne("PepeShop.Models.Basket", "Basket")
-                        .WithMany("Items")
-                        .HasForeignKey("BasketId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PepeShop.Models.Product", "Product")
-                        .WithMany("BasketItems")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("PepeShop.Models.Basket", null)
+                        .WithMany("Products")
+                        .HasForeignKey("BasketId");
                 });
 
             modelBuilder.Entity("PepeShop.Models.UserModel", b =>

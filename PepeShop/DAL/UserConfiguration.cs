@@ -23,6 +23,11 @@ namespace PepeShop.DAL
             ;
 
             builder
+                .HasOne(u => u.Basket)
+                //.WithOne(b => b.User)
+                ;
+
+            builder
                 .Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(50);

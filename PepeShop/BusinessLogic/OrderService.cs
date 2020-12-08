@@ -1,8 +1,10 @@
-﻿using PepeShop.BusinessLogic.Abstractions;
+﻿using Microsoft.EntityFrameworkCore;
+using PepeShop.BusinessLogic.Abstractions;
 using PepeShop.DAL;
 using PepeShop.Models;
 using System;
 using System.Collections.Generic;
+//using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,18 +19,25 @@ namespace PepeShop.BusinessLogic
             _context = context;
         }
 
-        public async Task AddProductToBasket(Product product, int userId)
+        public async Task AddProductToBasket(int productId, int userId)
         {
-            var user = _context.Users.FirstOrDefault(x => x.Id == userId);
+            var user = _context.Users
+                .Include(x => x.Basket)
+                .FirstOrDefault(x => x.Id == userId);
 
             if (user == null)
             {
                 throw new InvalidOperationException();
             }
 
-            user.Basket.Products.Add(product);
+            var item = new BasketItem()
+            {
+                ProductId = productId,
+            };
+
+            user.Basket.Items.Add(item);
 
             await _context.SaveChangesAsync();
-        }
+        }        
     }
 }

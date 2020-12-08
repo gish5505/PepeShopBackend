@@ -7,8 +7,8 @@ namespace PepeShop.Models
 {
     public class Basket
     {
-        public List<Product> Products { get; set; } = new List<Product>();
-
         public int Id { get; set; }
+
+        public ICollection<BasketItem> Items { get; set; }
     }
 }

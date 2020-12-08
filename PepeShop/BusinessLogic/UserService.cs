@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Cryptography.X509Certificates;
 
 namespace PepeShop.BusinessLogic
 {
@@ -49,6 +50,9 @@ namespace PepeShop.BusinessLogic
         public async Task<UserModel> GetUser(int id)
         {
             var result = await _context.Users
+                .Include(u => u.Basket)
+                    .ThenInclude(b => b.Items)
+                        .ThenInclude(x => x.Product)
                 .FirstOrDefaultAsync(u => u.Id == id);
 
             return result;

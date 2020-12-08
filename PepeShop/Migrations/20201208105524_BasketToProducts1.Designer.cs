@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PepeShop.DAL;
@@ -9,9 +10,10 @@ using PepeShop.DAL;
 namespace PepeShop.Migrations
 {
     [DbContext(typeof(PepeShopContext))]
-    partial class PepeShopContextModelSnapshot : ModelSnapshot
+    [Migration("20201208105524_BasketToProducts1")]
+    partial class BasketToProducts1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,13 +35,20 @@ namespace PepeShop.Migrations
 
             modelBuilder.Entity("PepeShop.Models.BasketItem", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
                     b.Property<int>("BasketId")
                         .HasColumnType("integer");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("integer");
 
-                    b.HasKey("BasketId", "ProductId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("BasketId");
 
                     b.HasIndex("ProductId");
 

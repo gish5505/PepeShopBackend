@@ -21,6 +21,10 @@ namespace PepeShop.DAL
             .Property(p => p.Id)
             .UseIdentityColumn()
             ;
+
+            //builder
+            //    .HasMany(p => p.Items)
+            //;
         }
     }
 }

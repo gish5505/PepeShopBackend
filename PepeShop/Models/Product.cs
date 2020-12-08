@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace PepeShop.Models
@@ -16,5 +17,8 @@ namespace PepeShop.Models
         public int Price { get; set; }
 
         public CategoryType Category { get; set; }
+
+        [JsonIgnore]
+        public ICollection<BasketItem> BasketItems { get; set; }
     }
 }

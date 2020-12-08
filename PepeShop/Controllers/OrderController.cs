@@ -23,9 +23,9 @@ namespace PepeShop.Controllers
         }
 
         [HttpPost("basket/add")]
-        public async Task<IActionResult> AddProductToBasket([FromBody] Product product, int userID)
+        public async Task<IActionResult> AddProductToBasket(int productId, int userID)
         {
-            await _basketService.AddProductToBasket(product, userID);
+            await _basketService.AddProductToBasket(productId, userID);
             return Ok();
 
         }

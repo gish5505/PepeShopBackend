@@ -32,6 +32,7 @@ namespace PepeShop.DAL
                 .ApplyConfiguration(new ProductConfiguration())
                 .ApplyConfiguration(new UserConfiguration())
                 .ApplyConfiguration(new BasketConfiguration())
+                .ApplyConfiguration(new BasketItemConfiguration())
                 ;
             
         }
