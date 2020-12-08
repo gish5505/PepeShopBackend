@@ -8,7 +8,7 @@ namespace PepeShop.BusinessLogic.Abstractions
 {
     public interface IBasketService
     {
-        Task AddProductToBasket(int productId, int userId);
+        Task AddProductToBasket(int productId, int userId, int qty);
 
         //Task<Basket> GetBasket(int id, int userId);
 

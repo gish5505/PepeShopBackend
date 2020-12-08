@@ -14,7 +14,7 @@ namespace PepeShop.DAL
         {
             builder
                 .ToTable("BasketItem")
-                .HasKey(p => new { p.BasketId, p.ProductId })
+                .HasKey(p => new { p.UserId, p.ProductId })
                 ;
 
             //builder
@@ -22,11 +22,11 @@ namespace PepeShop.DAL
             //.UseIdentityColumn()
             //;
 
-            builder
-                .HasOne(p => p.Basket)
-                .WithMany(p => p.Items)
-                .HasForeignKey(p => p.BasketId)                
-            ;
+            //builder
+            //    .HasOne(p => p.User)
+            //    .WithMany(p => p.Basket)
+            //    .HasForeignKey(p => p.UserId)                
+            //;
 
             builder
                 .HasOne(p => p.Product)

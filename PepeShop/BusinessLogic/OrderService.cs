@@ -19,7 +19,7 @@ namespace PepeShop.BusinessLogic
             _context = context;
         }
 
-        public async Task AddProductToBasket(int productId, int userId)
+        public async Task AddProductToBasket(int productId, int userId, int qty)
         {
             var user = _context.Users
                 .Include(x => x.Basket)
@@ -33,9 +33,10 @@ namespace PepeShop.BusinessLogic
             var item = new BasketItem()
             {
                 ProductId = productId,
+                Quantity = qty,
             };
 
-            user.Basket.Items.Add(item);
+            user.Basket.Add(item);
 
             await _context.SaveChangesAsync();
         }        

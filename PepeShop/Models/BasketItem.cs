@@ -11,12 +11,15 @@ namespace PepeShop.Models
         //public int Id { get; set; }
 
         [JsonIgnore]
-        public Basket Basket { get; set; }
+        public UserModel User { get; set; }
 
-        public int BasketId { get; set; }
+        public int UserId { get; set; }
 
         public Product Product { get; set; }
 
+        public int Quantity { get; set; }
+
+        [JsonIgnore]
         public int ProductId { get; set; }
     }
 }

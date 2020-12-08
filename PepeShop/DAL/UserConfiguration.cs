@@ -23,8 +23,9 @@ namespace PepeShop.DAL
             ;
 
             builder
-                .HasOne(u => u.Basket)
-                //.WithOne(b => b.User)
+                .HasMany(u => u.Basket)
+                .WithOne(b => b.User)
+                .HasForeignKey(b => b.UserId)
                 ;
 
             builder

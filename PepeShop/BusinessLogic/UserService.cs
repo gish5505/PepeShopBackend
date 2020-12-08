@@ -50,9 +50,8 @@ namespace PepeShop.BusinessLogic
         public async Task<UserModel> GetUser(int id)
         {
             var result = await _context.Users
-                .Include(u => u.Basket)
-                    .ThenInclude(b => b.Items)
-                        .ThenInclude(x => x.Product)
+                .Include(u => u.Basket)                    
+                    .ThenInclude(x => x.Product)
                 .FirstOrDefaultAsync(u => u.Id == id);
 
             return result;
