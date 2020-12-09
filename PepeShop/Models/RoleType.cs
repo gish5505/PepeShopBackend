@@ -12,9 +12,11 @@ namespace PepeShop.Models
     public enum RoleType
     {
         [EnumMember]
-        Client,
+        Customer,
         [EnumMember]
-        Manager
+        Manager,
+        [EnumMember]
+        Admin
 
     }
 }
