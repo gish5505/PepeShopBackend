@@ -1,36 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Work\\Dimon\\PepeShopBackend\\PepeShop\\PepeShop.csproj": {}
+    "C:\\Users\\Admin\\source\\repos\\PepeShop\\PepeShop\\PepeShop.csproj": {}
   },
   "projects": {
-    "C:\\Work\\Dimon\\PepeShopBackend\\PepeShop\\PepeShop.csproj": {
+    "C:\\Users\\Admin\\source\\repos\\PepeShop\\PepeShop\\PepeShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Work\\Dimon\\PepeShopBackend\\PepeShop\\PepeShop.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\PepeShop\\PepeShop\\PepeShop.csproj",
         "projectName": "PepeShop",
-        "projectPath": "C:\\Work\\Dimon\\PepeShopBackend\\PepeShop\\PepeShop.csproj",
-        "packagesPath": "C:\\Users\\Michael\\.nuget\\packages\\",
-        "outputPath": "C:\\Work\\Dimon\\PepeShopBackend\\PepeShop\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\source\\repos\\PepeShop\\PepeShop\\PepeShop.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\source\\repos\\PepeShop\\PepeShop\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Michael\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.ozon.ru/nuget/": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -42,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "EntityFramework": {
               "target": "Package",
@@ -88,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

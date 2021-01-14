@@ -29,5 +29,12 @@ namespace PepeShop.Controllers
             return Ok();
 
         }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateOrderFromBasket(int userId)
+        {
+            await _orderService.CreateOrderFromBasket(userId);
+            return Ok();
+        }
     }
 }

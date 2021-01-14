@@ -29,6 +29,10 @@ namespace PepeShop.DAL
                 ;
 
             builder
+                .HasMany(u => u.Orders)
+                ;
+
+            builder
                 .Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(50);

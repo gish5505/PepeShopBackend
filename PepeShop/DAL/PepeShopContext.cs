@@ -14,7 +14,7 @@ namespace PepeShop.DAL
 
         public DbSet<Product> Products { get; set; }
         public DbSet<UserModel> Users { get; set; }
-        //public DbSet<Basket> Baskets { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         public PepeShopContext(IOptions<PepeShopOptions> options)
         {
@@ -31,7 +31,7 @@ namespace PepeShop.DAL
             modelBuilder
                 .ApplyConfiguration(new ProductConfiguration())
                 .ApplyConfiguration(new UserConfiguration())
-                //.ApplyConfiguration(new BasketConfiguration())
+                .ApplyConfiguration(new OrderConfiguration())
                 .ApplyConfiguration(new BasketItemConfiguration())
                 ;
             

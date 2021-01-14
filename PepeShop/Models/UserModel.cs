@@ -27,5 +27,7 @@ namespace PepeShop.Models
         public string Discount { get; set; }
 
         public List<BasketItem> Basket { get; set; } = new List<BasketItem>();
+
+        public List<Order> Orders { get; set; } = new List<Order>();
     }
 }

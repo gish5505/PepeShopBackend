@@ -7,5 +7,6 @@ namespace PepeShop.BusinessLogic.Abstractions
 {
     public interface IOrderService
     {
+        Task CreateOrderFromBasket(int userId);
     }
 }
