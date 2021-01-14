@@ -20,18 +20,12 @@ namespace PepeShop.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(UserModel), 200)]
-        public async Task<IActionResult> Authenticate([FromBody] LoginRequest request)
+        public async Task<UserModel> Authenticate([FromBody] LoginRequest request)
         {
             
-            var response = await _authService.Authenticate(request);
+            var result = await _authService.Authenticate(request);
 
-            if (response == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(response);
+            return result;
         }
     }
 }

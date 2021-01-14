@@ -41,8 +41,7 @@ namespace PepeShop.BusinessLogic
                     Name = u.Name,
                     Address = u.Address,
                     Code = u.Code,
-                    Discount = u.Discount,
-                    Role = u.Role,
+                    Discount = u.Discount
                 })
                 .ToListAsync();
             return result;

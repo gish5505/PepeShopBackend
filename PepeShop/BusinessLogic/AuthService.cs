@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PepeShop.BusinessLogic.Abstractions;
+﻿using PepeShop.BusinessLogic.Abstractions;
 using PepeShop.DAL;
 using PepeShop.Models;
 using System;
@@ -20,10 +19,16 @@ namespace PepeShop.BusinessLogic
 
         public async Task<UserModel> Authenticate(LoginRequest request)
         {
-            var user = await _context.Users
-                .FirstOrDefaultAsync(x => x.Username == request.Username && x.Password == request.Password);
 
-            return user;
+            return new UserModel()
+            {
+                Id = 1,
+                Role = RoleType.Manager,
+                Name = "Hans"
+                
+
+            
+            };
         }
 
     }
