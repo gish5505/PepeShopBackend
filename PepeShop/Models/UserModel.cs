@@ -13,7 +13,7 @@ namespace PepeShop.Models
         public string Name { get; set; }
 
         public int Id { get; set; }
-
+        
         public RoleType Role { get; set; }
 
         public string Username { get; set; }
