@@ -45,6 +45,7 @@ namespace PepeShop.BusinessLogic
         {
             var user = await _context.Users
                 .Include(b => b.Basket)
+                    .ThenInclude(p => p.Product)
                 .FirstOrDefaultAsync(b => b.Id == userId);
 
             if (user == null)
@@ -65,7 +66,7 @@ namespace PepeShop.BusinessLogic
 
             var orderItems = user.Basket.Select(x => new OrderItem()
             {
-                ProductItem = x.Product,
+                Product = x.Product,
                 Quantity = x.Quantity,
                 
             })
@@ -74,13 +75,54 @@ namespace PepeShop.BusinessLogic
             order.OrderItems = orderItems;
             user.Orders.Add(order);
 
-            // сохраняем все
-
-            await _context.SaveChangesAsync();
-
-
-
             // чистим корзину
+            user.Basket.Clear();
+
+            // сохраняем все
+            await _context.SaveChangesAsync();
+            
+        }
+
+        public async Task<List<Order>> GetOrders(GetOrdersRequest request)
+        {
+            var query = (request.UserId != null) 
+                ? _context.Users.Where(x => x.Id == request.UserId).SelectMany(x => x.Orders).AsQueryable()
+                : _context.Orders.AsQueryable()
+                ;
+
+            if (request.OrderNumber != null)
+            {
+                query = query.Where(x => x.OrderNumber == request.OrderNumber);
+            }           
+
+            if (request.OrderStatus != null)
+            {
+                query = query.Where(x => x.OrderStatus == request.OrderStatus);
+            }
+
+            if (request.OrderDateFrom != null)
+            {
+                query = query.Where(x => x.OrderDate > request.OrderDateFrom);
+            }
+
+            if (request.OrderDateTo != null)
+            {
+                query = query.Where(x => x.OrderDate > request.OrderDateTo);
+            }
+
+            if (request.ShipmentDateFrom != null)
+            {
+                query = query.Where(x => x.OrderDate > request.ShipmentDateFrom);
+            }
+
+            if (request.ShipmentDateTo != null)
+            {
+                query = query.Where(x => x.OrderDate > request.ShipmentDateTo);
+            }
+
+            var result = await query.ToListAsync();
+
+            return result;
         }
     }
 }

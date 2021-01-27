@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PepeShop.DAL;
@@ -9,9 +10,10 @@ using PepeShop.DAL;
 namespace PepeShop.Migrations
 {
     [DbContext(typeof(PepeShopContext))]
-    partial class PepeShopContextModelSnapshot : ModelSnapshot
+    [Migration("20210115153654_EditOrderItemConfig")]
+    partial class EditOrderItemConfig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

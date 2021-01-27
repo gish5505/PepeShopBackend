@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PepeShop.DAL;
@@ -9,9 +10,10 @@ using PepeShop.DAL;
 namespace PepeShop.Migrations
 {
     [DbContext(typeof(PepeShopContext))]
-    partial class PepeShopContextModelSnapshot : ModelSnapshot
+    [Migration("20210115151029_OrderItemConfig")]
+    partial class OrderItemConfig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,14 +71,9 @@ namespace PepeShop.Migrations
             modelBuilder.Entity("PepeShop.Models.OrderItem", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int>("OrderId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int>("OrderId")
                         .HasColumnType("integer");
 
                     b.Property<int>("Quantity")
@@ -85,8 +82,6 @@ namespace PepeShop.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("OrderItems");
                 });
@@ -176,15 +171,15 @@ namespace PepeShop.Migrations
 
             modelBuilder.Entity("PepeShop.Models.OrderItem", b =>
                 {
-                    b.HasOne("PepeShop.Models.Order", "Order")
+                    b.HasOne("PepeShop.Models.Product", "ProductItem")
                         .WithMany("OrderItems")
-                        .HasForeignKey("OrderId")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PepeShop.Models.Product", "Product")
+                    b.HasOne("PepeShop.Models.Order", "Order")
                         .WithMany("OrderItems")
-                        .HasForeignKey("ProductId")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

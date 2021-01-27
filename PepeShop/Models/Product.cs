@@ -22,6 +22,6 @@ namespace PepeShop.Models
         public ICollection<BasketItem> BasketItems { get; set; }
 
         [JsonIgnore]
-        public ICollection<Order> Orders { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; }
     }
 }
